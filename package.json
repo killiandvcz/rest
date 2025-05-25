@@ -1,0 +1,17 @@
+{
+  "name": "@killiandvcz/rest",
+  "version": "1.0.0",
+  "module": "src/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}

@@ -340,6 +340,8 @@ export class Rest {
                 const context = new Context(request, this);
                 try {
                     await Promise.resolve(next(context));
+                    // console.log(context.response);
+                    
                     if (context.response) {
                         return context.response;
                     } else {

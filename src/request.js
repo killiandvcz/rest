@@ -95,7 +95,9 @@ export class Request {
     * Accès à tous les paramètres de requête
     * @returns {URLSearchParams}
     */
-    queries = () => this.url.searchParams;
+    get queries() {
+        return this.url.searchParams;
+    }
     
     /**
     * Accès à tous les paramètres de requête sous forme d'objet

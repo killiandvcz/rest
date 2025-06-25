@@ -122,9 +122,10 @@ export class Context {
     * @param {string} message - Message d'erreur
     * @param {number} [status=500] - Code de statut HTTP
     * @param {Object} [details={}] - Détails supplémentaires
+    * @param {ResponseInit?} [options] - Options de la réponse
     * @returns {Response}
     */
-    error(message, status = 500, details = {}) {
+    error(message, status = 500, details = {}, options = {}) {
         this.#response = Response.json({
             error: {
                 message,
@@ -133,6 +134,11 @@ export class Context {
             }
         }, { 
             status,
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+                ...options.headers
+            }
         });
         return this.#response;
     }

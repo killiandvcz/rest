@@ -16,7 +16,8 @@
 
 
 /**
- * @typedef {Object<RestMethod, req: RestRequest => RestResponse>} RestRoute
+ * @typedef {((req: RestRequest) => RestResponse)} RestHandlerFunction
+ * @typedef {Object<RestMethod, RestHandlerFunction>} RestRoute
  */
 
 /**

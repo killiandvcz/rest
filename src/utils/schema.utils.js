@@ -1,9 +1,9 @@
-import {z, ZodAny} from 'zod';
+import {z, ZodAny} from 'zod/v4';
 
 /**
 * @callback SchemaCallback
-* @param {import('zod').z} schema - Zod instance
-* @returns {import('zod').ZodAny} - Zod type
+* @param {import('zod/v4').z} schema - Zod instance
+* @returns {import('zod/v4').ZodAny} - Zod type
 */
 
 /**
@@ -40,6 +40,8 @@ export const schema = async (c, schema, options = {}) => {
     const parsedData = (await Promise.resolve(schema(z))).safeParse({...data});
     
     if (!parsedData.success) {
+        console.log("Schema validation failed:", parsedData.error);
+        
         if (options.redact) {
             throw c.error("Invalid request data", 400);
         } else {
